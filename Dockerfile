@@ -12,14 +12,5 @@ RUN apt-get update && apt-get install -y \
 RUN python3 -m venv /venv
 ENV PATH="/venv/bin:$PATH"
 
-# Install Python packages
-COPY requirements.txt .
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
-
-# Copy the rest of the code
-COPY feed.py /usr/bin/feed.py
-COPY entrypoint.sh /entrypoint.sh
-
-# Run the application
-ENTRYPOINT ["/entrypoint.sh"]
+# Install PyYAML
+RUN pip install PyYAML
